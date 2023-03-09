@@ -1,0 +1,5 @@
+﻿{
+  "stryker-config": {
+    "ignore-methods": [ "SaveChangesAsync", "SaveChanges" ]
+  }
+}

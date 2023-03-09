@@ -1,0 +1,11 @@
+{
+  "IsEncrypted": false,
+  "Values": {
+    "urlUrl": "http://host.docker.internal:8090/api",
+    "blobStorage": "",
+    "containerName": "electronicpointimporter",
+    "AzureWebJobsStorage": "UseDevelopmentStorage=true",
+    "FUNCTIONS_WORKER_RUNTIME": "dotnet-isolated",
+    "AzureWebJobsMyServiceBus": ""
+  }
+}

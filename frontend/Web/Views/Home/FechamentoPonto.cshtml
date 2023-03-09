@@ -1,0 +1,59 @@
+﻿@model List<Archive>
+@{
+    ViewData["Title"] = "Fechamento de Ponto";
+}
+
+
+
+<div class="row">
+    <div class="col-md-12 mb-3">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Upload dos CSV</h5>
+                <form asp-action="FechamentoPonto" method="post" enctype="multipart/form-data">
+                    
+                    <div class="mb-3">
+                        <label for="Archives" class="form-label">Arquivos</label>
+                        <input type="file" multiple name="Archives" class="form-control" id="Archives" />
+                        @{
+                            if (TempData.Peek("MessageError") != null)
+                            {
+                                <h6 class="text-danger">@TempData.Peek("MessageError")</h6>
+                            }
+                        }
+                    </div>
+                    <button type="submit" class="btn btn-primary">Enviar</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Processamento dos CSV</h5>
+
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Arquivo</th>
+                            <th>Status</th>
+                            <th>Link</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>@item.Name</td>
+                                <td>@item.Status</td>
+                                <td>@(item.Status == Web.Models.Enums.ProcessingStatus.Finalizado ? Html.Raw($"<a href='http://localhost:8090/api/department-payment/archive/{item.Id}' target='_blank'>Json Link</a>") : "Indisponível")</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+

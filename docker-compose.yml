@@ -1,0 +1,28 @@
+version: '3.4'
+
+services:
+  api:
+    image: ${DOCKER_REGISTRY-}api
+    build:
+      context: .
+      dockerfile: api/Api/Dockerfile
+    ports:
+      - "8090:80"
+
+  processor:
+    image: ${DOCKER_REGISTRY-}processor
+    build:
+      context: .
+      dockerfile: processador/Processor/Dockerfile
+    depends_on:
+      - api
+
+
+  web:
+    image: ${DOCKER_REGISTRY-}web
+    build:
+      context: .
+      dockerfile: frontend/Web/Dockerfile
+    depends_on:
+      - api
+
