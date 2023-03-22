@@ -41,7 +41,7 @@
 - Interface do projeto.
 
 ## API:
-- Disponibilização das rotas POST, GET.
+- Disponibilização das rotas POST, GET e PUT.
 
 ## Processor:
 - Responsável por processar os arquivos csv do ponto eletronico.
